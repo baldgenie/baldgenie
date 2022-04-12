@@ -10,33 +10,17 @@ import { useRouter } from "next/router";
 const VideoState = (props) => {
 
     const router = useRouter();
-    const [spinnerLoading, setspinnerLoading] = useState(false)
-    const [DarkTheme, setDarkTheme] = useState('')
-    const [currentLocation, setcurrentLocation] = useState(null)
+    const [urllocation, seturllocation] = useState('')
 
 
-
-
-    function setSpinner(boolean) {
-
-        setspinnerLoading(boolean)
-        setTimeout(() => {
-            setspinnerLoading(false)
-
-        }, 2000);
-
-    }
-    function setDarkThemeFunc(theme) {
-        setDarkTheme(theme)
-
-    }
+  
 
 
 
 
 
     return (
-        <videosContext.Provider value={{ spinnerLoading, setSpinner, setDarkThemeFunc, DarkTheme, currentLocation, setcurrentLocation, }}>
+        <videosContext.Provider value={{ seturllocation,urllocation }}>
             {props.children}
         </videosContext.Provider>
     )

@@ -3,16 +3,16 @@ import { signIn, signOut, useSession } from "next-auth/react"
 import {
     LocationMarkerIcon, PrinterIcon, WifiIcon, DeviceMobileIcon, HomeIcon
 } from '@heroicons/react/solid';
-import {  useRouter } from 'next/router';
+import { useRouter } from 'next/router';
 
 function Login() {
 
-    const router =useRouter()
+    const router = useRouter();
     const { data: session, status } = useSession()
 
     console.log(session);
 
-    if(session){
+    if (session) {
         router.push('/')
     }
 
@@ -72,7 +72,7 @@ function Login() {
                         <h2 className='my-4 text-center font-semibold'>Or</h2>
 
 
-                        <button onClick={(e)=>{e.preventDefault();signIn('google')}} type="submit" className="group relative w-full flex justify-center py-2 px-4  text-sm font-medium rounded-md text-white bg-red-500 hover:bg-red-700  items-center  ">
+                        <button onClick={(e) => { e.preventDefault(); signIn('google') }} type="submit" className="group relative w-full flex justify-center py-2 px-4  text-sm font-medium rounded-md text-white bg-red-500 hover:bg-red-700  items-center  ">
                             <img
                                 className='h-6 mr-4 '
                                 src='/google.png'
