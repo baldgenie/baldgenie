@@ -8,6 +8,8 @@ import { BeatLoader } from 'react-spinners';
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { LoremIpsum } from 'react-lorem-ipsum';
+import Navbar from '../components/Navbar';
+
 
 
 export default function Home() {
@@ -15,7 +17,7 @@ export default function Home() {
   const [locationState, setloaction] = useState(null)
   const [loading, setloading] = useState(false)
 
-
+  const router = useRouter();
 
 
   const categories = [
@@ -31,18 +33,8 @@ export default function Home() {
 
   const serachTerms = ['lorem', 'printer shop', 'lorem', 'computer near me', 'lorem', 'lorem', 'house security', 'lorem', 'lorem', 'printer shop', 'lorem', 'computer near me', 'lorem', 'audio video', 'lorem', 'lorem', 'tv mounting', 'lorem', 'printer shop', 'lorem', 'computer near me', 'lorem', 'lorem', 'house security', 'lorem', 'lorem', 'printer shop', 'lorem', 'computer near me', 'lorem', 'audio video', 'lorem', 'lorem', 'tv mounting', 'lorem',]
 
-  const socialMediaIcons = [
-    { name: 'Facebook', url: '/socialmedia/facebook.png' },
-    { name: 'Instagram', url: '/socialmedia/instagram.png' },
-    { name: 'LinkedIn', url: '/socialmedia/linkedin.png' },
-    { name: 'Twitter', url: '/socialmedia/twitter.png' },
-    { name: 'Youtube', url: '/socialmedia/youtube.png' },
-  ]
 
   const getLocationHnadler = () => {
-
-
-
     async function fetchData() {
 
       if (!locationState) {
@@ -75,16 +67,10 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <header>
-        <div className='flex justify-end items-center'>
-          <h1 className='border-r-2 border-gray-300 p-1 px-2 text-sm cursor-pointer hover:text-red-500'>List your bussiness </h1>
-          <h1 className='border-r-2 border-gray-300 p-1 px-2 text-sm cursor-pointer hover:text-red-500'>Sign In </h1>
-          <h1 className='border-r-2 border-gray-300 p-1 px-2 text-sm cursor-pointer hover:text-red-500'>Sign Up</h1>
-        </div>
-      </header>
+
 
       <main className='m-4 sm:w-4/5  sm:mx-auto  '>
-
+        <Navbar />
 
         {/* Location and Search Services  */}
         <div className='w-3/5  sm:w-2/5 md:w-1/5 mx-auto m-2 my-4'>
@@ -97,7 +83,7 @@ export default function Home() {
         </div>
 
         <div className='border-2 border-gray-200   flex my-2  rounded shadow-xl items-center md:w-4/5 md:mx-auto'>
-          <div onClick={getLocationHnadler} className=' flex item-center justify-center space-x-2  p-1  my-2 border-r-2 border-gray-400 pr-2 cursor-pointer '>
+          <div onClick={getLocationHnadler} className=' flex items-center justify-center space-x-2  p-1  my-2 border-r-2 border-gray-400 pr-2 cursor-pointer '>
             <LocationMarkerIcon className='h-6 text-red-600' />
             {locationState &&
               <p className='font-semibold text-sm '>{`${locationState.city},${locationState.country_name} `}</p>
@@ -138,7 +124,7 @@ export default function Home() {
 
             {categories.map(category => {
               return (
-                <div className='w-40 m-2 p-4 rounded-lg shadow-xl  flex flex-col items-center justify-center space-y-2  aspect-video ' key={category.name}>
+                <div className='w-40 m-2 p-4 rounded-lg shadow-xl  flex flex-col items-center justify-center space-y-2  aspect-video hover:scale-105 hover:bg-slate-200 transition cursor-pointer' key={category.name}>
                   <div className='w-16 relative'>
                     <img
                       src={category.url}
@@ -187,7 +173,7 @@ export default function Home() {
             <h1>&apos;&apos;Lorem ipsum odor amet, consectetuer adipiscing elit. Proin consequat integer venenatis maximus litora ornare&apos;&apos;</h1>
 
             <div className='  flex items-center justify-start mt-2' >
-              <div className='w-16 relative border-2 '>
+              <div className='w-16 relative '>
                 <img
                   src='/profile.png'
                 ></img>
@@ -236,57 +222,12 @@ export default function Home() {
 
             </div>
           </div>
-       
+
         </div>
       </main>
 
 
-      <footer>
-        <div className='flex bg-gray-700 p-6 flex-col md:flex-row items-center justify-center space-y-4 md:justify-around'>
 
-          <div>
-            <div className='w-40 mx-auto m-2 my-4'>
-              <img
-                className=''
-                alt='loading'
-                src='/baldgenie.png'>
-              </img>
-            </div>
-            <div className='flex space-x-2'>
-              {socialMediaIcons.map(item => {
-                return (
-
-                  <div className='w-6' key={item.name}>
-                    <img
-                      src={item.url}
-                      alt=''
-                    >
-                    </img>
-                  </div>
-
-                )
-              })}
-            </div>
-          </div>
-
-          <div className='flex justify-around ' >
-            <div className='text-white flex flex-col  '>
-              <h1 className='font-semibold'>About Us</h1>
-              <h2 className='text-sm cursor-pointer hover:text-red-500'>Home</h2>
-              <h2 className='text-sm cursor-pointer hover:text-red-500'>Faqs</h2>
-              <h2 className='text-sm cursor-pointer hover:text-red-500'>Terms & Conditions</h2>
-              <h2 className='text-sm cursor-pointer hover:text-red-500'>Privacy</h2>
-            </div>
-            <div className='text-white flex flex-col ml-6 '>
-              <h1 className='font-semibold'>Contact Us</h1>
-              <h2 className='text-sm cursor-pointer hover:text-red-500'>Carriers</h2>
-              <h2 className='text-sm cursor-pointer hover:text-red-500'>Advertise with Us</h2>
-              <h2 className='text-sm cursor-pointer hover:text-red-500'>Help</h2>
-              <h2 className='text-sm cursor-pointer hover:text-red-500'>Faqs</h2>
-            </div>
-          </div>
-        </div>
-      </footer>
     </div>
   )
 }
