@@ -102,7 +102,6 @@ export default function Home() {
       <main className='m-4 sm:w-4/5  sm:mx-auto  '>
         <Navbar />
 
-        <button onClick={getLocationHnadler}>Getloaction</button>
 
         {/* Location and Search Services  */}
         <div className='w-3/5  sm:w-2/5 md:w-1/5 mx-auto m-2 my-4'>
