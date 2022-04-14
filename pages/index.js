@@ -17,7 +17,12 @@ export default function Home() {
   const [locationState, setloaction] = useState(null)
   const [loading, setloading] = useState(false)
 
+  const [coordinates, setCoordinates] = useState({})
+
   const router = useRouter();
+
+
+
 
 
   const categories = [
@@ -33,6 +38,31 @@ export default function Home() {
 
   const serachTerms = ['lorem', 'printer shop', 'lorem', 'computer near me', 'lorem', 'lorem', 'house security', 'lorem', 'lorem', 'printer shop', 'lorem', 'computer near me', 'lorem', 'audio video', 'lorem', 'lorem', 'tv mounting', 'lorem', 'printer shop', 'lorem', 'computer near me', 'lorem', 'lorem', 'house security', 'lorem', 'lorem', 'printer shop', 'lorem', 'computer near me', 'lorem', 'audio video', 'lorem', 'lorem', 'tv mounting', 'lorem',]
 
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(position => {
+      setCoordinates({ latitude: position.coords.latitude, longitude: position.coords.longitude })
+    }, showError)
+    function showError(error) {
+      switch (error.code) {
+        case error.PERMISSION_DENIED:
+          alert("User denied the request for Geolocation.")
+          break;
+        case error.POSITION_UNAVAILABLE:
+          alert("Location information is unavailable.")
+          break;
+        case error.TIMEOUT:
+          alert("The request to get user location timed out.")
+          break;
+        case error.UNKNOWN_ERROR:
+          alert("An unknown error occurred.")
+          break;
+        default:
+          alert("An unknown error occurred.")
+
+      }
+    }
+  }, [])
+
 
   const getLocationHnadler = () => {
     async function fetchData() {
@@ -42,10 +72,10 @@ export default function Home() {
 
         var location = {}
         try {
-          const response = await fetch('https://geolocation-db.com/json/8dd79c70-0801-11ec-a29f-e381a788c2c0')
+          const response = await fetch(`https://www.mapquestapi.com/geocoding/v1/reverse?key=${'IfCQDj22QUdEF9hV6zuxCuo0L8J1HXAP'}&location=${coordinates.latitude},${coordinates.longitude}&includeRoadMetadata=false&includeNearestIntersection=true`)
           location = await response.json()
-          console.log(location);
-          setloaction(location)
+          
+          setloaction(location.results[0].locations[0])
           setloading(false)
 
         } catch (error) {
@@ -72,6 +102,8 @@ export default function Home() {
       <main className='m-4 sm:w-4/5  sm:mx-auto  '>
         <Navbar />
 
+        <button onClick={getLocationHnadler}>Getloaction</button>
+
         {/* Location and Search Services  */}
         <div className='w-3/5  sm:w-2/5 md:w-1/5 mx-auto m-2 my-4'>
 
@@ -86,7 +118,7 @@ export default function Home() {
           <div onClick={getLocationHnadler} className=' flex items-center justify-center space-x-2  p-1  my-2 border-r-2 border-gray-400 pr-2 cursor-pointer '>
             <LocationMarkerIcon className='h-6 text-red-600' />
             {locationState &&
-              <p className='font-semibold text-sm '>{`${locationState.city},${locationState.country_name} `}</p>
+              <p className='font-semibold text-sm '>{`${locationState.adminArea5},${locationState.adminArea1} `}</p>
             }
 
             <div className={`flex justify-center   ${loading ? "" : "hidden"} `}>

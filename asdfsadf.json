@@ -1,0 +1,31 @@
+{
+    "street": "Bypass",
+    "adminArea6": "",
+    "adminArea6Type": "Neighborhood",
+    "adminArea5": "Birganj",
+    "adminArea5Type": "City",
+    "adminArea4": "",
+    "adminArea4Type": "County",
+    "adminArea3": "Central Development Region",
+    "adminArea3Type": "State",
+    "adminArea1": "NP",
+    "adminArea1Type": "Country",
+    "postalCode": "44300",
+    "geocodeQualityCode": "B1AAA",
+    "geocodeQuality": "STREET",
+    "dragPoint": false,
+    "sideOfStreet": "N",
+    "linkId": "0",
+    "unknownInput": "",
+    "type": "s",
+    "latLng": {
+        "lat": 27.010026,
+        "lng": 84.88325
+    },
+    "displayLatLng": {
+        "lat": 27.010026,
+        "lng": 84.88325
+    },
+    "mapUrl": "http://www.mapquestapi.com/staticmap/v5/map?key=IfCQDj22QUdEF9hV6zuxCuo0L8J1HXAP&type=map&size=225,160&locations=27.01002620005317,84.88325016380426|marker-sm-50318A-1&scalebar=true&zoom=15&rand=1591712973",
+    "nearestIntersection": null
+}

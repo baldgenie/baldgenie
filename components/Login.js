@@ -18,7 +18,7 @@ function Login() {
 
     return (
 
-        <div className="sm:w-4/5 md:w-3/5 lg:w-4/12 mx-auto flex items-center justify-center py-12 px-4  border-2 ">
+        <div className=" sm:w-4/5 md:w-3/5 lg:w-4/12 mx-auto flex items-center justify-center py-12 px-4  border-2 ">
             <div className="space-y-8   m-2 my-4   ">
                 <div>
                     <div className='w-2/5     mx-auto m-2 my-4'>
@@ -77,7 +77,7 @@ function Login() {
                                 className='h-6 mr-4 '
                                 src='/google.png'
                             />
-                            Google
+                           Continue with Google
                         </button>
 
 
